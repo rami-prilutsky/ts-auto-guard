@@ -8,7 +8,7 @@
     "build": "run-script-os",
     "build:win32": "tsc",
     "build:linux": "chmod +x lib/cli.js",
-    "prepublishOnly": "npm run build",
+    "prepublish": "npm run build",
     "format": "tslint --fix --project ./tsconfig.json && prettier --write src/**/*.ts",
     "format:check": "prettier --list-different src/**/*.ts"
   },
