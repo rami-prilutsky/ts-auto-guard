@@ -4,21 +4,22 @@
 
 > Generate type guard functions from TypeScript interfaces
 
-_**Early prototype** - this project is not very well tested and is not feature complete_
-
 A tool for automatically generating TypeScript [type guards](https://www.typescriptlang.org/docs/handbook/advanced-types.html#type-guards-and-differentiating-types) for interfaces in your code base.
 
 This tool aims to allow developers to verify data from untyped sources to ensure it conforms to TypeScript types. For example when initializing a data store or receiving structured data in an AJAX response.
 
 ## Install
 
-Not published yet
+### Yarn
 
 ```
-$ git clone git@github.com:rhys-vdw/ts-auto-guard.git
-$ cd ts-auto-guard
-$ npm install && npm build
-$ npm link
+$ yarn add -D ts-auto-guard
+```
+
+### npm
+
+```
+$ npm install --save-dev ts-auto-guard
 ```
 
 ## Usage
@@ -79,9 +80,22 @@ if (isPerson(person)) {
 }
 ```
 
+## Debug mode
+
+Use debug mode to help work out why your type guards are failing in development. This will change the output type guards to log the path, expected type and value of failing guards.
+
+```
+$ ts-auto-guard --debug
+```
+
+```ts
+isPerson({ name: 20, age: 20 })
+// stderr: "person.name type mismatch, expected: string, found: 20"
+```
+
 ## Short circuiting
 
-`ts-auto-guard` also supports a `shortcircuit` flag that will cause all guards
+ts-auto-guard also supports a `shortcircuit` flag that will cause all guards
 to always return `true`.
 
 ```
