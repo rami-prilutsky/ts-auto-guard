@@ -7,7 +7,7 @@
     "test": "cross-env NODE_ENV=test && npm run format:check && tape -r ts-node/register tests/**/*.ts | tap-diff",
     "build": "run-script-os",
     "build:win32": "tsc",
-    "build:linux": "chmod +x lib/cli.js",
+    "build:linux": "tsc && chmod +x lib/cli.js",
     "prepare": "npm run build",
     "format": "tslint --fix --project ./tsconfig.json && prettier --write src/**/*.ts",
     "format:check": "prettier --list-different src/**/*.ts"
